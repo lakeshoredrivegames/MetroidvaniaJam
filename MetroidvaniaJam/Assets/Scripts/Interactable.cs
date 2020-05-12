@@ -10,14 +10,13 @@ public class Interactable : MonoBehaviour
 
     public bool canPlaceObject;
     public GameObject snapObject;
+    public GameObject heldObject;
 
     private Camera playerCam;
     private Camera objectCam;
     private GameObject objectCamara;
     private bool isHolding;
     
-
-
     void Start()
     {
         isHolding = false;
@@ -47,7 +46,7 @@ public class Interactable : MonoBehaviour
                 if (hit.collider.gameObject.tag == "Pickup")
                 {
                     //GetComponent<AudioSource>().Play();
-                    snapObject = hit.collider.gameObject;
+                    heldObject = hit.collider.gameObject;
                     hit.collider.transform.SetParent(HoldPosition.transform);
                     hit.collider.transform.localPosition = Vector3.zero;
                     hit.collider.transform.localRotation = Quaternion.identity;
@@ -61,7 +60,7 @@ public class Interactable : MonoBehaviour
         else if (isHolding == true) // is holding object
         {
             //transform.parent.gameObject.GetComponent<AudioSource>().Play();
-            GameObject heldObject = HoldPosition.transform.GetChild(0).gameObject;
+            //heldObject = HoldPosition.transform.GetChild(0).gameObject;
             Rigidbody heldRigidBody = heldObject.GetComponent<Rigidbody>();
             
 
@@ -72,6 +71,7 @@ public class Interactable : MonoBehaviour
                 heldObject.transform.localPosition = Vector3.zero;
                 heldObject.transform.localRotation = Quaternion.identity;
                 heldObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+                heldObject.tag = "Untagged";
                 canPlaceObject = false;
             }
             else
@@ -81,6 +81,7 @@ public class Interactable : MonoBehaviour
                 heldRigidBody.velocity = playerCam.transform.forward * throwStrength;
             }
 
+            heldObject = null;
             isHolding = false;
             objectCamara.SetActive(false);
             snapObject = null;
