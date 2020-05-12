@@ -26,8 +26,17 @@ public class SnapTrigger : MonoBehaviour
             Debug.Log("fire trigger");
             col.gameObject.GetComponent<Interactable>().canPlaceObject = true;
             col.gameObject.GetComponent<Interactable>().snapObject = placeObject;
-            //chair.transform.Translate(new Vector3(8, 0, 0) * Time.deltaTime);
-            //chair.transform.Translate (Vector3.right* speed * Time.deltaTime);
+            
+        }
+    }
+
+    void OnTriggerExit(Collider col)
+    {
+        if (col.gameObject.name == "Player")
+        {
+            Debug.Log("exit trigger");
+            col.gameObject.GetComponent<Interactable>().canPlaceObject = false;
+            
         }
     }
 }

@@ -72,6 +72,7 @@ public class Interactable : MonoBehaviour
                 heldObject.transform.localPosition = Vector3.zero;
                 heldObject.transform.localRotation = Quaternion.identity;
                 heldObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
+                canPlaceObject = false;
             }
             else
             {
