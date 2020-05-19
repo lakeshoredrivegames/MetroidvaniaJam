@@ -1,0 +1,171 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerMove: MonoBehaviour
+{
+    public string horizontalInputName;
+    public string verticalInputName;
+    public float movementSpeed;
+
+    private CharacterController characterController;
+
+    public bool isJumping;
+    public AnimationCurve jumpFallOff;
+    public float jumpMultiplier;
+    public KeyCode jumpKey;
+
+    [Header("(Juice) Head Left/Right Sway")]
+    public Camera playerCamera;
+    public bool swayEnabled = false;
+    private Vector3 camPos;
+    public float swayLength = 8f;
+    public float swaySpeed = 4f;
+
+    [Header("(Juice) Head Bob")]
+    public bool headBobEnabled = false;
+    public float amplitude = 0.01f;
+    public float frequency = 1.5f;
+    public float speed = 8f;
+
+    [Header("(Juice) Impact")]
+    public bool jumpImpactEnabled = false;
+    public float impactLen = 2f;
+    public float intensity= 10f;
+
+    [Header("Pause Menu")]
+    public bool playerInMenu = false;
+    public Canvas PauseMenu;
+
+    [Header("Player Sounds")]
+    public AudioSource footStep;
+    private bool isPlayingFootStep = false;
+
+    private void Awake()
+    {
+        camPos = playerCamera.transform.localPosition;
+        characterController = GetComponent<CharacterController>();
+        { // 60fps
+            QualitySettings.vSyncCount = 0;  // VSync must be disabled
+            Application.targetFrameRate = 60;
+        }
+    }
+
+
+    void Update()
+    {
+        PlayerMovement();
+    }
+
+    void CheckIfPausedGame()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            playerInMenu = !playerInMenu;
+            if(playerInMenu)
+            {
+                PauseMenu.gameObject.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                PauseMenu.gameObject.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
+    }
+
+    private void PlayerMovement()
+    {
+        CheckIfPausedGame(); if (playerInMenu) { return; } // Player wont be able to move when paused game.
+
+        float vertInput = Input.GetAxis(verticalInputName) * movementSpeed;
+        float horizInput = Input.GetAxis(horizontalInputName) * movementSpeed;
+
+        Vector3 forwardMovement = transform.forward * vertInput;
+        Vector3 rightMovement = transform.right * horizInput;
+
+        characterController.SimpleMove(forwardMovement + rightMovement);
+        { // (Juice) Camera Sway
+            if (swayEnabled)
+            {
+                int n = 1;
+                byte ok = Convert.ToByte(Convert.ToBoolean(horizInput));
+                float m = 2*(n^ok);
+                float s = (swaySpeed+m) * Time.deltaTime;
+                float i = Input.GetAxis(horizontalInputName);
+                Vector3 bp = playerCamera.transform.localPosition;
+                Vector3 endp = new Vector3((camPos.x + (swayLength*.1f)) * i, camPos.y, camPos.z);
+                playerCamera.transform.localPosition = ((1 - s) * bp + s * endp);
+            }
+        }
+        { // (Juice) Head Bob
+            if (headBobEnabled)
+            {
+                int x = 0;
+                if((Input.GetAxis(verticalInputName)!=0) || (Input.GetAxis(horizontalInputName)!=0)) { x = 1; }
+                float s = speed*Time.time;
+                playerCamera.transform.localPosition =  new Vector3(
+                    playerCamera.transform.localPosition.x,
+                    playerCamera.transform.localPosition.y+((amplitude*Mathf.Sin(s*frequency))*x ),
+                    playerCamera.transform.localPosition.z);
+                if(playerCamera.transform.localPosition.y < 0.88)
+                {
+                    if(!isPlayingFootStep)
+                    {
+                        footStep.Play();
+                        isPlayingFootStep = true;
+                    }
+                    else if (footStep.isPlaying == false)
+                    {
+                        isPlayingFootStep = false;
+                    }
+                }
+            }
+        }
+
+        JumpInput();
+    }
+
+    private void JumpInput()
+    {
+        if(Input.GetKeyDown(jumpKey) && !isJumping)
+        {
+            isJumping = true;
+            StartCoroutine(JumpEvent());
+        }
+    }
+
+    private IEnumerator JumpEvent()
+    {
+        characterController.slopeLimit = 90.0f;
+
+        float timeInAir = 0.0f;
+
+        do
+        {
+            float jumpForce = jumpFallOff.Evaluate(timeInAir);
+            characterController.Move(Vector3.up * jumpForce * jumpMultiplier * Time.deltaTime);
+            timeInAir += Time.deltaTime;
+            yield return null;
+
+        } while (!characterController.isGrounded && characterController.collisionFlags != CollisionFlags.Above);
+
+        characterController.slopeLimit = 45.0f;
+
+        isJumping = false;
+        { // (Juice) Land impact
+            if (jumpImpactEnabled)
+            {
+                float c = impactLen*.2f;
+                float cs = intensity*1.5f;
+                Vector3 bp = playerCamera.transform.localPosition;
+                Vector3 endp = new Vector3(camPos.x, camPos.y - (c), camPos.z);
+                playerCamera.transform.localPosition = Vector3.Lerp(bp, endp, cs*Time.deltaTime);
+            }
+        }
+    }
+}
