@@ -19,7 +19,7 @@ public class SnapTrigger : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerStay(Collider col)
     {
         if (col.gameObject.name == "Player")
         {

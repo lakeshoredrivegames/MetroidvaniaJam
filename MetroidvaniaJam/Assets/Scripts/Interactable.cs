@@ -16,13 +16,16 @@ public class Interactable : MonoBehaviour
     private Camera objectCam;
     private GameObject objectCamara;
     private bool isHolding;
+
+    
+
     
     void Start()
     {
         isHolding = false;
         playerCam = Camera.main;
         objectCamara = GameObject.Find("ObjectCamera");
-        objectCamara.SetActive(false);
+        objectCamara.SetActive(true);
         objectCam = objectCamara.GetComponent<Camera>();
         canPlaceObject = false;
 
@@ -32,6 +35,10 @@ public class Interactable : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1")) { Interact(); }
     }
+    
+
+    
+
 
     private void Interact()
     {
@@ -47,12 +54,18 @@ public class Interactable : MonoBehaviour
                 {
                     //GetComponent<AudioSource>().Play();
                     heldObject = hit.collider.gameObject;
-                    hit.collider.transform.SetParent(HoldPosition.transform);
+                    heldObject.layer = 10;
+                    //let object know it's time to lerp
+                    heldObject.GetComponent<Lerping>().lerpToObject = HoldPosition;
+                    heldObject.GetComponent<Lerping>().lerpToPosition = HoldPosition.transform.position;
+                    heldObject.GetComponent<Lerping>().StartLerp(true);
+
+                    //hit.collider.transform.SetParent(HoldPosition.transform);
                     hit.collider.transform.localPosition = Vector3.zero;
                     hit.collider.transform.localRotation = Quaternion.identity;
                     hit.collider.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
                     isHolding = true;
-                    objectCamara.SetActive(true);
+                   
 
                 }
             }
@@ -67,11 +80,10 @@ public class Interactable : MonoBehaviour
             //are you on trigger and object can be snapped in place
             if (canPlaceObject)
             {
-                heldObject.transform.SetParent(snapObject.transform);
-                heldObject.transform.localPosition = Vector3.zero;
-                heldObject.transform.localRotation = Quaternion.identity;
-                heldObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
-                heldObject.tag = "Untagged";
+                //let object know it's time to lerp
+                heldObject.GetComponent<Lerping>().lerpToObject = snapObject;
+                heldObject.GetComponent<Lerping>().lerpToPosition = snapObject.transform.position;
+                heldObject.GetComponent<Lerping>().StartLerp(false);
                 canPlaceObject = false;
             }
             else
@@ -79,11 +91,13 @@ public class Interactable : MonoBehaviour
                 heldRigidBody.constraints = RigidbodyConstraints.None;
                 heldObject.transform.parent = null;
                 heldRigidBody.velocity = playerCam.transform.forward * throwStrength;
+                objectCamara.SetActive(false);
             }
 
+            heldObject.layer = 9;
             heldObject = null;
             isHolding = false;
-            objectCamara.SetActive(false);
+            
             snapObject = null;
         }
     }
