@@ -34,9 +34,6 @@ public class PlayerMove: MonoBehaviour
     public float impactLen = 2f;
     public float intensity= 10f;
 
-    [Header("Pause Menu")]
-    public bool playerInMenu = false;
-    public Canvas PauseMenu;
 
     private void Awake()
     {
@@ -50,30 +47,8 @@ public class PlayerMove: MonoBehaviour
         PlayerMovement();
     }
 
-    void CheckIfPausedGame()
-    {
-        if (Input.GetButtonDown("Cancel"))
-        {
-            playerInMenu = !playerInMenu;
-            if(playerInMenu)
-            {
-                PauseMenu.gameObject.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-            else
-            {
-                PauseMenu.gameObject.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-        }
-    }
-
     private void PlayerMovement()
     {
-        CheckIfPausedGame(); if (playerInMenu) { return; } // Player wont be able to move when paused game.
-
         float vertInput = Input.GetAxis(verticalInputName) * movementSpeed;
         float horizInput = Input.GetAxis(horizontalInputName) * movementSpeed;
 

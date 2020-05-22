@@ -7,7 +7,6 @@ public class PlayerLook : MonoBehaviour
     public string mouseXInputName, mouseYInputName;
     public float mouseSensitivity;
     public Transform playerBody;
-    private PlayerMove playerMove;
 
     private float xAxisClamp;
 
@@ -15,20 +14,16 @@ public class PlayerLook : MonoBehaviour
     {
         LockCursor();
         xAxisClamp = 0;
-        playerMove = playerBody.GetComponent<PlayerMove>();
     }
 
     private void LockCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
-
+    
     private void Update()
     {
-        if (playerMove.playerInMenu) { return; } // Player wont look around when game is paused.
-
         CameraRotation();
         
     }
