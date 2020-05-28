@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 0a99309d67b205b46a80f9c97873fb79
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MoveTest.unity
     guid: d36c549e31bb3de40aa5397e990e6c9a
+  - enabled: 1
+    path: Assets/Scenes/Blockmesh3.unity
+    guid: aa7bcfb45ae36cc40a1b2f0a93a1c617
   m_configObjects: {}
