@@ -10,6 +10,8 @@ public class PlayerLook : MonoBehaviour
 
     private float xAxisClamp;
 
+    public GameObject pauseMenu;
+
     private void Awake()
     {
         LockCursor();
@@ -21,11 +23,33 @@ public class PlayerLook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    private bool isPaused = false;
+    private void CheckForPause()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            pauseMenu.SetActive(!pauseMenu.activeSelf);
+            if (pauseMenu.activeSelf)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+                isPaused = true;
+            }
+            else
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                isPaused = false;
+            }
+        }
+    }
+
     
     private void Update()
     {
-        CameraRotation();
-        
+        CheckForPause();
+        if(isPaused == false)
+            CameraRotation();
     }
 
     private void CameraRotation()
