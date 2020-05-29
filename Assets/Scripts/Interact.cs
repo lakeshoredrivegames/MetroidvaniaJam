@@ -7,6 +7,7 @@ public class Interact : MonoBehaviour
     
     [SerializeField] private float throwStrength;
     [SerializeField] private GameObject HoldPosition;
+    [SerializeField] private float raycastDistance = 20.0f;
 
     public bool canPlaceObject;
     public GameObject snapObject;
@@ -18,10 +19,11 @@ public class Interact : MonoBehaviour
     private Camera objectCam;
     private GameObject objectCamara;
     private bool isHolding;
+    // Bit shift the index of the layer (10) to get a bit mask
+    private int layerMask;
 
-    
 
-    
+
     void Start()
     {
         isHolding = false;
@@ -30,6 +32,7 @@ public class Interact : MonoBehaviour
         objectCamara.SetActive(true);
         objectCam = objectCamara.GetComponent<Camera>();
         canPlaceObject = false;
+        layerMask = LayerMask.GetMask("Pickup");
 
     }
 
@@ -47,8 +50,9 @@ public class Interact : MonoBehaviour
         Debug.Log("interacting");
         if (isHolding == false)
         {
+
             RaycastHit hit;
-            if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, 10.0f))
+            if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, raycastDistance, layerMask))
             {
                 Debug.DrawRay(playerCam.transform.position, playerCam.transform.forward * hit.distance, Color.red, 20);
                 Debug.Log("hit name: " + hit.collider.gameObject.name);
@@ -57,6 +61,18 @@ public class Interact : MonoBehaviour
                     GetComponent<AudioSource>().Play();
                     heldObject = hit.collider.gameObject;
                     heldObject.layer = 11;
+                    
+                    //check if battery is in a holder
+                    //if so, reduce battery holder count 
+                    if(heldObject.GetComponent<Lerping>().inBatteryHolder == true)
+                    {
+                        heldObject.GetComponent<Lerping>().inBatteryHolder = false;
+                        heldObject.GetComponent<Lerping>().SetOldHeldObject();
+                        heldObject.GetComponent<Lerping>().oldHeldObject.GetComponent<SnapTrigger>().hasBattery = false;
+                        heldObject.GetComponent<Lerping>().oldHeldObject.GetComponent<SnapTrigger>().doorObject.GetComponent<Animate>().Animation();
+                    }
+                    
+
                     //let object know it's time to lerp
                     heldObject.GetComponent<Lerping>().lerpToObject = HoldPosition;
                     heldObject.GetComponent<Lerping>().lerpToPosition = HoldPosition.transform.position;
@@ -88,6 +104,8 @@ public class Interact : MonoBehaviour
                 heldObject.GetComponent<Lerping>().actionObject = actionObject;
                 heldObject.GetComponent<Lerping>().StartLerp(false);
                 canPlaceObject = false;
+                actionObject = null;
+                heldObject.GetComponent<Lerping>().actionObject = null;
             }
             else
             {
@@ -96,6 +114,8 @@ public class Interact : MonoBehaviour
                 heldRigidBody.useGravity = true;
                 heldRigidBody.velocity = playerCam.transform.forward * throwStrength;
                 objectCamara.SetActive(false);
+                actionObject = null;
+                heldObject.GetComponent<Lerping>().actionObject = null;
             }
 
             heldObject.layer = 10;

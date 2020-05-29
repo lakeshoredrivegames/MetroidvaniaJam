@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 711411052046028039}
   - component: {fileID: 711411052046028036}
   - component: {fileID: 711411052046028056}
+  - component: {fileID: 1100516914}
   m_Layer: 0
   m_Name: Battery Holder
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711411052046028037}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.69, y: -6.48, z: 8.23}
   m_LocalScale: {x: 1, y: 1.8915, z: 1}
   m_Children: []
@@ -87,11 +88,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711411052046028037}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.0019888, y: 0.9999994, z: 0.92210436}
+  m_Center: {x: -1.1936579, y: 0, z: -0.012855649}
 --- !u!82 &711411052046028056
 AudioSource:
   m_ObjectHideFlags: 0
@@ -112,7 +113,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 0.6165333
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -188,3 +189,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1100516914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711411052046028037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dea9bf791c4a214a9900f207e174e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorObject: {fileID: 0}
+  SoundToPlay: {fileID: 0}
+  hasBattery: 0
