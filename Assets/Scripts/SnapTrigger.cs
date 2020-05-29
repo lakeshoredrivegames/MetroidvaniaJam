@@ -55,7 +55,7 @@ public class SnapTrigger : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.name == "Battery")
+        if (col.gameObject.name == "Battery" && !hasBattery)
         {
             Debug.Log("stay trigger");
             player.GetComponent<Interact>().canPlaceObject = true;
