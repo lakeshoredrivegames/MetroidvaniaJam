@@ -5,11 +5,12 @@ using UnityEngine;
 public class SnapTrigger : MonoBehaviour
 {
 
-    [SerializeField] private GameObject doorObject;
+    public GameObject doorObject;
     private GameObject player;
     private bool played;
     public AudioClip SoundToPlay;
     private BoxCollider boxCollider;
+    public bool hasBattery = false;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,11 @@ public class SnapTrigger : MonoBehaviour
         played = false;
         player = GameObject.Find("Player");
         boxCollider = GetComponent<BoxCollider>();
+
+        if(doorObject == null)
+        {
+            Debug.Log("Door Object is empty. Add a door holder object to the trigger object named " + gameObject.name);
+        }
     }
 
     // Update is called once per frame
@@ -53,8 +59,9 @@ public class SnapTrigger : MonoBehaviour
             player.GetComponent<Interact>().canPlaceObject = true;
             player.GetComponent<Interact>().snapObject = this.gameObject;
             player.GetComponent<Interact>().actionObject = doorObject;
-            
-            
+            col.gameObject.GetComponent<Lerping>().actionObject = doorObject;
+
+
         }
     }
 
@@ -65,6 +72,7 @@ public class SnapTrigger : MonoBehaviour
             Debug.Log("exit trigger");
             player.GetComponent<Interact>().canPlaceObject = false;
             
+
         }
     }
 }

@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1018905869361589216
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 311267066255160331, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 311267066255160333, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 311267066255160335, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140585, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: lerpSeconds
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140588, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_Name
+      value: Battery
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140588, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140589, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.600061
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140589, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140589, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.3275795
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140589, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.28143123
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140589, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.2978245
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140589, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.17218271
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140589, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8957958
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140589, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140589, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 37.356003
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140589, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 33.322002
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140589, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -10.206
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140589, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.48104006
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140589, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.48104
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489255902380140589, guid: 2bfb055a8663bd84e9a982439b1b480b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.48104006
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6489255902380140591, guid: 2bfb055a8663bd84e9a982439b1b480b, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 2bfb055a8663bd84e9a982439b1b480b, type: 3}

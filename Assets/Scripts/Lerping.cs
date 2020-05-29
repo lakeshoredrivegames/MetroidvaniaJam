@@ -11,6 +11,7 @@ public class Lerping : MonoBehaviour
     private Vector3 startPosition;
     private Quaternion startRotation;
     public GameObject lerpToObject;
+    public GameObject oldHeldObject;
     public GameObject actionObject;
     public Vector3 lerpToPosition;
     public Quaternion lerpToRotation;
@@ -18,6 +19,7 @@ public class Lerping : MonoBehaviour
     private GameObject mainCamera;
     private GameObject player;
     public bool activateCam = false;
+    public bool inBatteryHolder = false;
     //private Camera objectCam;
 
     // Start is called before the first frame update
@@ -29,8 +31,14 @@ public class Lerping : MonoBehaviour
        // objectCam = objectCamara.GetComponent<Camera>();
     }
 
+    public void SetOldHeldObject()
+    {
+        oldHeldObject = lerpToObject;
+    }
+
     public void StartLerp(bool showCam)
     {
+        
         mainCamera.GetComponent<PlayerLook>().enabled = false;
         player.GetComponent<PlayerMove>().enabled = false;
         isLerping = true;
@@ -61,10 +69,20 @@ public class Lerping : MonoBehaviour
         if(lerpToObject.GetComponent<AudioSource>() != null)
             lerpToObject.GetComponent<AudioSource>().Play();
 
+        
         if (actionObject != null)
         {
-            Debug.Log("try to animate");
+
+            //actionObject.GetComponent<ObjectController>().numBatteriesUsed++;
+            SnapTrigger snapTrigger = lerpToObject.GetComponent<SnapTrigger>();
+            if (snapTrigger)
+            {
+                snapTrigger.hasBattery = !snapTrigger.hasBattery;
+                inBatteryHolder = !inBatteryHolder;
+            }
+            //Debug.Log("try to animate");
             actionObject.GetComponent<Animate>().Animation();
+            actionObject = null;
         }
 
         GetComponent<Rigidbody>().useGravity = false;
