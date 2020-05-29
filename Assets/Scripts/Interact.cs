@@ -20,7 +20,9 @@ public class Interact : MonoBehaviour
     private GameObject objectCamara;
     private bool isHolding;
     // Bit shift the index of the layer (10) to get a bit mask
-    private int layerMask;
+    
+    public int layerMaskPickup;
+    public int layerMaskHolding;
 
 
 
@@ -32,7 +34,8 @@ public class Interact : MonoBehaviour
         objectCamara.SetActive(true);
         objectCam = objectCamara.GetComponent<Camera>();
         canPlaceObject = false;
-        layerMask = LayerMask.GetMask("Pickup");
+        layerMaskPickup = LayerMask.GetMask("Pickup");
+        layerMaskHolding = LayerMask.GetMask("Holding");
 
     }
 
@@ -52,7 +55,7 @@ public class Interact : MonoBehaviour
         {
 
             RaycastHit hit;
-            if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, raycastDistance, layerMask))
+            if (Physics.Raycast(playerCam.transform.position, playerCam.transform.forward, out hit, raycastDistance, layerMaskPickup))
             {
                 Debug.DrawRay(playerCam.transform.position, playerCam.transform.forward * hit.distance, Color.red, 20);
                 Debug.Log("hit name: " + hit.collider.gameObject.name);
@@ -60,11 +63,12 @@ public class Interact : MonoBehaviour
                 {
                     GetComponent<AudioSource>().Play();
                     heldObject = hit.collider.gameObject;
-                    heldObject.layer = 11;
-                    
+                    //heldObject.layer = LayerMask.NameToLayer("Holding");
+                    ChangeLayersRecursively(heldObject.transform, "Holding");
+
                     //check if battery is in a holder
                     //if so, reduce battery holder count 
-                    if(heldObject.GetComponent<Lerping>().inBatteryHolder == true)
+                    if (heldObject.GetComponent<Lerping>().inBatteryHolder == true)
                     {
                         heldObject.GetComponent<Lerping>().inBatteryHolder = false;
                         heldObject.GetComponent<Lerping>().SetOldHeldObject();
@@ -83,7 +87,8 @@ public class Interact : MonoBehaviour
                     hit.collider.transform.localRotation = Quaternion.identity;
                     hit.collider.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition | RigidbodyConstraints.FreezeRotation;
                     isHolding = true;
-                   
+                    actionObject = null;
+
 
                 }
             }
@@ -118,11 +123,21 @@ public class Interact : MonoBehaviour
                 heldObject.GetComponent<Lerping>().actionObject = null;
             }
 
-            heldObject.layer = 10;
+            //heldObject.layer = LayerMask.NameToLayer("Pickup");
+            ChangeLayersRecursively(heldObject.transform, "Pickup");
             heldObject = null;
             isHolding = false;
             
             snapObject = null;
+        }
+    }
+
+    public static void ChangeLayersRecursively(Transform trans, string name)
+    {
+        trans.gameObject.layer = LayerMask.NameToLayer(name);
+        foreach (Transform child in trans)
+        {
+            ChangeLayersRecursively(child, name);
         }
     }
 }

@@ -83,6 +83,8 @@ public class Lerping : MonoBehaviour
             //Debug.Log("try to animate");
             actionObject.GetComponent<Animate>().Animation();
             actionObject = null;
+            player.GetComponent<Interact>().actionObject = null;
+            player.GetComponent<Interact>().snapObject = null;
         }
 
         GetComponent<Rigidbody>().useGravity = false;
