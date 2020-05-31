@@ -1,6 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+// code-review: This file needs a description of what it does.
+
+// code-review: I think this object is pointless. Lerping from
+// point a to b could just be done by using the built in Math
+// module.
 
 public class Lerping : MonoBehaviour
 {
