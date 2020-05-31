@@ -8,6 +8,11 @@ public class PlayerLook : MonoBehaviour
     public float mouseSensitivity;
     public Transform playerBody;
 
+    [Header("Grab 2D UI")]
+    public GameObject grabSprite;
+    public string grabSpriteTagName;
+    public float grabSpriteRaycastLength;
+
     private float xAxisClamp;
 
     public GameObject pauseMenu;
@@ -15,6 +20,7 @@ public class PlayerLook : MonoBehaviour
     private void Awake()
     {
         LockCursor();
+	Cursor.visible = false;
         xAxisClamp = 0;
     }
 
@@ -44,10 +50,32 @@ public class PlayerLook : MonoBehaviour
         }
     }
 
-    
+    private void RaycastThenSetHUD()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(this.gameObject.transform.position, 
+            this.gameObject.transform.forward, out hit, grabSpriteRaycastLength))
+        {
+            if (hit.transform.gameObject.tag == grabSpriteTagName)
+            {
+                grabSprite.SetActive(true);
+            }
+            else
+            {
+                grabSprite.SetActive(false);
+            }
+        }
+        else
+        {
+            grabSprite.SetActive(false);
+        }
+    }
+
     private void Update()
     {
         CheckForPause();
+	RaycastThenSetHUD();
+
         if(isPaused == false)
             CameraRotation();
     }
