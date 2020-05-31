@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -99,6 +99,9 @@ public class PlayerMove: MonoBehaviour
 
         float timeInAir = 0.0f;
 
+        // code-review: Do while is bad practice.
+        // I would change the whole jumping mechanic to be based on physics
+        // You will find it performs much better.
         do
         {
             float jumpForce = jumpFallOff.Evaluate(timeInAir);

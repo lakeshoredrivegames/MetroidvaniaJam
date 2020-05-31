@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,12 +20,14 @@ public class PlayerLook : MonoBehaviour
 
     private void LockCursor()
     {
+        // code-review: You probably want to hide the cursor as well.
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     private bool isPaused = false;
     private void CheckForPause()
     {
+        // code-review: Should be made into a state machine.
         if (Input.GetButtonDown("Cancel"))
         {
             pauseMenu.SetActive(!pauseMenu.activeSelf);

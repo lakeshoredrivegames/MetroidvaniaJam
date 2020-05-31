@@ -1,6 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+// code-review: What does snap trigger do? Please write what this file does.
 
 public class SnapTrigger : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class SnapTrigger : MonoBehaviour
     void Start()
     {
         played = false;
+        // code-review: Just make it public and plug it in via inspector.
         player = GameObject.Find("Player");
         boxCollider = GetComponent<BoxCollider>();
 
@@ -24,6 +27,8 @@ public class SnapTrigger : MonoBehaviour
             Debug.Log("Door Object is empty. Add a door holder object to the trigger object named " + gameObject.name);
         }
     }
+    
+    // code-review: Remove unused functions
 
     // Update is called once per frame
     void Update()
@@ -33,8 +38,11 @@ public class SnapTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
+        // code-review: This can fall apart very easily.
+        // You should be checking a tag here.
         if (col.gameObject.name == "Battery")
         {
+            // code-review: Remove all commented code.
             //if (col.gameObject.GetComponent<Interact>().heldObject == null)
             //{
                 //rotate held object
@@ -42,6 +50,9 @@ public class SnapTrigger : MonoBehaviour
                 //move held object to right in front of trigger to middle of box collider
                 //col.gameObject.transform.position = boxCollider.transform.position;
 
+                // code-review: Design this in a way where it does not matter
+                // if the sound played already. The collided object should
+                // have some state indicating that it is 'activated'.
                 if (played == false)
                 {
                     GetComponent<AudioSource>().PlayOneShot(SoundToPlay);
@@ -53,6 +64,7 @@ public class SnapTrigger : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
+        // code-review: Same comment as before.
         if (col.gameObject.name == "Battery")
         {
             //Debug.Log("fire trigger");
@@ -67,6 +79,7 @@ public class SnapTrigger : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
+        // code-review: Same comment as before.
         if (col.gameObject.name == "Battery")
         {
             Debug.Log("exit trigger");
