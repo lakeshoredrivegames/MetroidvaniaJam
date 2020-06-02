@@ -11,6 +11,7 @@ public class SnapTrigger : MonoBehaviour
     public AudioClip SoundToPlay;
     private BoxCollider boxCollider;
     public bool hasBattery = false;
+    private Quaternion oldRotation;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +38,8 @@ public class SnapTrigger : MonoBehaviour
         {
             //if (col.gameObject.GetComponent<Interact>().heldObject == null)
             //{
-                //rotate held object
+            //rotate held object
+                oldRotation = col.gameObject.transform.rotation;
                 col.gameObject.transform.rotation = transform.rotation;
                 //move held object to right in front of trigger to middle of box collider
                 //col.gameObject.transform.position = boxCollider.transform.position;
@@ -53,9 +55,9 @@ public class SnapTrigger : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.name == "Battery")
+        if (col.gameObject.name == "Battery" && !hasBattery)
         {
-            //Debug.Log("fire trigger");
+            Debug.Log("stay trigger");
             player.GetComponent<Interact>().canPlaceObject = true;
             player.GetComponent<Interact>().snapObject = this.gameObject;
             player.GetComponent<Interact>().actionObject = doorObject;
@@ -71,7 +73,8 @@ public class SnapTrigger : MonoBehaviour
         {
             Debug.Log("exit trigger");
             player.GetComponent<Interact>().canPlaceObject = false;
-            
+            col.gameObject.transform.rotation = oldRotation;
+
 
         }
     }
