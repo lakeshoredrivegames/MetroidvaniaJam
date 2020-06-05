@@ -2,6 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+abstract class GrabIconState
+{
+    public abstract void render();
+}
+class GrabIconShow : GrabIconState
+{
+    public GameObject _icon;
+    public override void render() { _icon.SetActive(true); }
+}
+class GrabIconHide : GrabIconState
+{
+    public GameObject _icon;
+    public override void render() { _icon.SetActive(false); }
+}
+
 public class PlayerLook : MonoBehaviour
 {
     public string mouseXInputName, mouseYInputName;
@@ -17,8 +32,15 @@ public class PlayerLook : MonoBehaviour
 
     public GameObject pauseMenu;
 
+    private static GrabIconHide GRAB_ICON_HIDE = new GrabIconHide();
+    private static GrabIconShow GRAB_ICON_SHOW = new GrabIconShow();
+    private GrabIconState grabIconState = GRAB_ICON_HIDE;
+
     private void Awake()
     {
+        GRAB_ICON_HIDE._icon = grabSprite;
+        GRAB_ICON_SHOW._icon = grabSprite;
+   
         LockCursor();
 	Cursor.visible = false;
         xAxisClamp = 0;
@@ -52,23 +74,25 @@ public class PlayerLook : MonoBehaviour
 
     private void RaycastThenSetHUD()
     {
+        grabIconState = GRAB_ICON_HIDE;
+
         RaycastHit hit;
         if (Physics.Raycast(this.gameObject.transform.position, 
             this.gameObject.transform.forward, out hit, grabSpriteRaycastLength))
         {
             if (hit.transform.gameObject.tag == grabSpriteTagName)
             {
-                grabSprite.SetActive(true);
-            }
-            else
-            {
-                grabSprite.SetActive(false);
+                grabIconState = GRAB_ICON_SHOW;
             }
         }
-        else
+
+        Interact playerInteract = playerBody.gameObject.GetComponent<Interact>();
+        if (playerInteract.isHolding)
         {
-            grabSprite.SetActive(false);
+            grabIconState = GRAB_ICON_HIDE;
         }
+
+        grabIconState.render();
     }
 
     private void Update()

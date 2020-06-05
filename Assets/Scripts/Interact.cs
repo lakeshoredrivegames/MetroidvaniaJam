@@ -18,7 +18,7 @@ public class Interact : MonoBehaviour
     private Camera playerCam;
     private Camera objectCam;
     private GameObject objectCamara;
-    private bool isHolding;
+    public bool isHolding;
     // Bit shift the index of the layer (10) to get a bit mask
     
     public int layerMaskPickup;
