@@ -10,11 +10,12 @@ public class PlayerMove: MonoBehaviour
     public float movementSpeed;
 
     private CharacterController characterController;
+    Rigidbody rb;
 
-    public bool isJumping;
-    public AnimationCurve jumpFallOff;
-    public float jumpMultiplier;
-    public KeyCode jumpKey;
+    [Header("Jump")]
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+    [Range(1,10)] public float jumpVelocity;
 
     [Header("(Juice) Head Left/Right Sway")]
     public Camera playerCamera;
@@ -37,6 +38,7 @@ public class PlayerMove: MonoBehaviour
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         camPos = playerCamera.transform.localPosition;
         characterController = GetComponent<CharacterController>();
     }
@@ -81,45 +83,32 @@ public class PlayerMove: MonoBehaviour
             }
         }
 
+        
+    }
+
+    private void FixedUpdate()
+    {
         JumpInput();
+        BetterJump();
     }
 
     private void JumpInput()
     {
-        if(Input.GetKeyDown(jumpKey) && !isJumping)
+        if(Input.GetButtonDown("Jump"))
         {
-            isJumping = true;
-            StartCoroutine(JumpEvent());
+            Debug.Log("Jump Button Pressed");
+            GetComponent<Rigidbody>().velocity = Vector3.up * jumpVelocity;
+            Debug.Log("Adding velocity to RB");
         }
     }
 
-    private IEnumerator JumpEvent()
+    private void BetterJump()
     {
-        characterController.slopeLimit = 90.0f;
-
-        float timeInAir = 0.0f;
-
-        do
+        if (rb.velocity.y < 0)
         {
-            float jumpForce = jumpFallOff.Evaluate(timeInAir);
-            characterController.Move(Vector3.up * jumpForce * jumpMultiplier * Time.deltaTime);
-            timeInAir += Time.deltaTime;
-            yield return null;
-
-        } while (!characterController.isGrounded && characterController.collisionFlags != CollisionFlags.Above);
-
-        characterController.slopeLimit = 45.0f;
-
-        isJumping = false;
-        { // (Juice) Land impact
-            if (jumpImpactEnabled)
-            {
-                float c = impactLen*.2f;
-                float cs = intensity*1.5f;
-                Vector3 bp = playerCamera.transform.localPosition;
-                Vector3 endp = new Vector3(camPos.x, camPos.y - (c), camPos.z);
-                playerCamera.transform.localPosition = Vector3.Lerp(bp, endp, cs*Time.deltaTime);
-            }
+            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
         }
     }
+
+    
 }
