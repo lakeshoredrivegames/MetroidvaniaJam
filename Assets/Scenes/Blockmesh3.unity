@@ -9313,6 +9313,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactObject: {fileID: 0}
   canPlaceObject: 0
+  audioChainsawSlashing: {fileID: 0}
+  audioChainsawIdle: {fileID: 0}
 --- !u!114 &1449075336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19003,6 +19005,11 @@ PrefabInstance:
     - target: {fileID: 6065669895518028748, guid: 31a3a54474e57bd4e8d2c018d7427c4b,
         type: 3}
       propertyPath: m_Name
+      value: Battery
+      objectReference: {fileID: 0}
+    - target: {fileID: 6065669895518028748, guid: 31a3a54474e57bd4e8d2c018d7427c4b,
+        type: 3}
+      propertyPath: m_TagString
       value: Battery
       objectReference: {fileID: 0}
     - target: {fileID: 6065669895518028749, guid: 31a3a54474e57bd4e8d2c018d7427c4b,

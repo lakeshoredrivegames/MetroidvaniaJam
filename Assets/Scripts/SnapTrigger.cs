@@ -34,7 +34,7 @@ public class SnapTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.name == "Battery")
+        if (col.gameObject.tag == "Battery")
         {
             //if (col.gameObject.GetComponent<Interact>().heldObject == null)
             //{
@@ -55,7 +55,7 @@ public class SnapTrigger : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.name == "Battery" && !hasBattery)
+        if (col.gameObject.tag == "Battery" && !hasBattery)
         {
             //Debug.Log("stay trigger");
             col.gameObject.GetComponent<InteractObject>().canPlaceObject = true;
@@ -69,7 +69,7 @@ public class SnapTrigger : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
-        if (col.gameObject.name == "Battery")
+        if (col.gameObject.tag == "Battery")
         {
            // Debug.Log("exit trigger");
             col.gameObject.GetComponent<InteractObject>().canPlaceObject = false;
