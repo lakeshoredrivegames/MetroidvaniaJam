@@ -71,11 +71,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 96ef74bfe82b64647badc76868a41b4b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1bb20788c6710cf4cbd8b4ee4e160dd4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -285,9 +285,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactObject: {fileID: 0}
   canPlaceObject: 0
-  audioChainsawSlashing: {fileID: 8300000, guid: 0861a557adb3f364885e1fd60eaa6895,
-    type: 3}
-  audioChainsawIdle: {fileID: 8300000, guid: 1bb20788c6710cf4cbd8b4ee4e160dd4, type: 3}
 --- !u!114 &8148670933230718285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,11 +315,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1bb20788c6710cf4cbd8b4ee4e160dd4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0861a557adb3f364885e1fd60eaa6895, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -334,7 +331,7 @@ AudioSource:
   rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
-  BypassReverbZones: 1
+  BypassReverbZones: 0
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -418,7 +415,7 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 0
+  looping: 1
   prewarm: 0
   playOnAwake: 0
   useUnscaledTime: 0
