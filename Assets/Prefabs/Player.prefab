@@ -263,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalInputName: Horizontal
   verticalInputName: Vertical
-  movementSpeed: 6
+  movementSpeed: 4
   isJumping: 0
   jumpFallOff:
     serializedVersion: 2
@@ -417,6 +417,7 @@ MonoBehaviour:
   snapObject: {fileID: 0}
   heldObject: {fileID: 0}
   actionObject: {fileID: 0}
+  playerCam: {fileID: 0}
 --- !u!1 &5202456652465130649
 GameObject:
   m_ObjectHideFlags: 0

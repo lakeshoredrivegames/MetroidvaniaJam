@@ -13,7 +13,7 @@ public class Lerping : MonoBehaviour
     public GameObject lerpToObject;
     public GameObject oldHeldObject;
     public GameObject actionObject;
-    public Vector3 lerpToPosition;
+    //public Vector3 lerpToPosition;
     public Quaternion lerpToRotation;
     private GameObject objectCamera;
     private GameObject mainCamera;
@@ -38,7 +38,7 @@ public class Lerping : MonoBehaviour
 
     public void StartLerp(bool showCam)
     {
-        
+        Debug.Log("Start lerp");
         mainCamera.GetComponent<PlayerLook>().enabled = false;
         player.GetComponent<PlayerMove>().enabled = false;
         isLerping = true;
@@ -57,7 +57,7 @@ public class Lerping : MonoBehaviour
     public void StopLerp()
     {
         isLerping = false;
-        transform.position = lerpToPosition;
+        transform.position = lerpToObject.transform.position;
         transform.rotation = lerpToRotation;
         transform.SetParent(lerpToObject.transform);
         if (!activateCam)
@@ -69,7 +69,26 @@ public class Lerping : MonoBehaviour
         if(lerpToObject.GetComponent<AudioSource>() != null)
             lerpToObject.GetComponent<AudioSource>().Play();
 
-        
+
+        if (oldHeldObject != null)
+        {
+            SnapTrigger snapTrigger = oldHeldObject.GetComponent<SnapTrigger>();
+            if (snapTrigger)
+            {
+                snapTrigger.hasBattery = !snapTrigger.hasBattery;
+                Debug.Log("oldHeldObject: " + oldHeldObject.name);
+                Debug.Log("remove battery");
+            
+                
+                if (snapTrigger.activateObject.GetComponent<Animate>())
+                {
+                    snapTrigger.activateObject.GetComponent<Animate>().Animation();
+                }
+            }
+
+            oldHeldObject = null;
+
+        }
         if (actionObject != null)
         {
 
@@ -81,11 +100,15 @@ public class Lerping : MonoBehaviour
                 inBatteryHolder = !inBatteryHolder;
             }
             //Debug.Log("try to animate");
-            actionObject.GetComponent<Animate>().Animation();
+            if (actionObject.GetComponent<Animate>())
+            {
+                actionObject.GetComponent<Animate>().Animation();
+            }
             actionObject = null;
             player.GetComponent<Interact>().actionObject = null;
             player.GetComponent<Interact>().snapObject = null;
         }
+
 
         GetComponent<Rigidbody>().useGravity = false;
 
@@ -99,7 +122,7 @@ public class Lerping : MonoBehaviour
     void Update()
     {
 
-        if (isLerping)
+        if (isLerping && lerpToObject)
         {
             lerpTimer += Time.deltaTime;
             if (lerpTimer > lerpSeconds)
@@ -109,7 +132,7 @@ public class Lerping : MonoBehaviour
             else
             {
                 float ratio = lerpTimer / lerpSeconds;
-                transform.position = Vector3.Lerp(startPosition, lerpToPosition, ratio);
+                transform.position = Vector3.Lerp(startPosition, lerpToObject.transform.position, ratio);
                 transform.rotation = Quaternion.Slerp(startRotation, lerpToRotation, ratio);
             }
         }

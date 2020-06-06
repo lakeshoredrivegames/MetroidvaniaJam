@@ -13,9 +13,12 @@ public class DeathRespawn : MonoBehaviour
     // Start is called before the first frame update
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Triggered");
-        playerController.enabled = false;
-        Player.transform.position = respawnPoint.transform.position;
-        playerController.enabled = true;
+        if (other.gameObject.name == "Player")
+        {
+            Debug.Log("Triggered");
+            playerController.enabled = false;
+            Player.transform.position = respawnPoint.transform.position;
+            playerController.enabled = true;
+        }
     }
 }
