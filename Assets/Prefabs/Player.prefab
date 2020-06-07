@@ -791,33 +791,9 @@ MonoBehaviour:
   horizontalInputName: Horizontal
   verticalInputName: Vertical
   movementSpeed: 6
-  isJumping: 0
-  jumpFallOff:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.0029449463
-      value: 1.0377388
-      inSlope: 0.66686034
-      outSlope: 0.66686034
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.07337253
-    - serializedVersion: 3
-      time: 0.49840343
-      value: 0.21735959
-      inSlope: 0.38480666
-      outSlope: 0.38480666
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.10163679
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  jumpMultiplier: 8
-  jumpKey: 32
+  fallMultiplier: 2.5
+  lowJumpMultiplier: 2
+  jumpVelocity: 5
   playerCamera: {fileID: 5202456652465130631}
   swayEnabled: 1
   swayLength: 4
@@ -944,6 +920,8 @@ MonoBehaviour:
   snapObject: {fileID: 0}
   heldObject: {fileID: 0}
   actionObject: {fileID: 0}
+  layerMaskPickup: 0
+  layerMaskHolding: 0
 --- !u!1 &5202456652465130649
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,6 +47,8 @@ public class PlayerMove: MonoBehaviour
     void Update()
     {
         PlayerMovement();
+        JumpInput();
+        BetterJump();
     }
 
     private void PlayerMovement()
@@ -85,12 +87,7 @@ public class PlayerMove: MonoBehaviour
 
         
     }
-
-    private void FixedUpdate()
-    {
-        JumpInput();
-        BetterJump();
-    }
+    
 
     private void JumpInput()
     {

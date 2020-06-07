@@ -19052,11 +19052,6 @@ PrefabInstance:
       propertyPath: movementSpeed
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 5202456651995849900, guid: 06af03db2c793a44fadef6e1363a9c99,
-        type: 3}
-      propertyPath: jumpVelocity
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5202456651995849901, guid: 06af03db2c793a44fadef6e1363a9c99,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19065,7 +19060,7 @@ PrefabInstance:
     - target: {fileID: 5202456651995849901, guid: 06af03db2c793a44fadef6e1363a9c99,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1
+      value: 1.635
       objectReference: {fileID: 0}
     - target: {fileID: 5202456651995849901, guid: 06af03db2c793a44fadef6e1363a9c99,
         type: 3}
