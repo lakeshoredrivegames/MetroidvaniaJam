@@ -1,0 +1,153 @@
+fileFormatVersion: 2
+guid: b4410fca7111bcb4b909893f62d2f1cc
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: OfficeChair_polySurface35
+    100004: OfficeChair_polySurface36
+    100006: OfficeChair_polySurface41
+    100008: OfficeChair_polySurface43
+    100010: OfficeChair_polySurface47
+    100012: OfficeChair_polySurface48
+    100014: OfficeChair_polySurface49
+    100016: OfficeChair_polySurface51
+    100018: OfficeChair_polySurface53
+    100020: OfficeChair_polySurface54
+    400000: //RootNode
+    400002: OfficeChair_polySurface35
+    400004: OfficeChair_polySurface36
+    400006: OfficeChair_polySurface41
+    400008: OfficeChair_polySurface43
+    400010: OfficeChair_polySurface47
+    400012: OfficeChair_polySurface48
+    400014: OfficeChair_polySurface49
+    400016: OfficeChair_polySurface51
+    400018: OfficeChair_polySurface53
+    400020: OfficeChair_polySurface54
+    2100000: BackCap
+    2100002: Support
+    2100004: BackCushion
+    2100006: BottomCushion
+    2100008: Fbx Default Material.004
+    2100010: Fbx Default Material.005
+    2100012: WheelCovers
+    2100014: Wheels
+    2100016: Bottom
+    2100018: ArtRests
+    2300000: OfficeChair_polySurface35
+    2300002: OfficeChair_polySurface36
+    2300004: OfficeChair_polySurface41
+    2300006: OfficeChair_polySurface43
+    2300008: OfficeChair_polySurface47
+    2300010: OfficeChair_polySurface48
+    2300012: OfficeChair_polySurface49
+    2300014: OfficeChair_polySurface51
+    2300016: OfficeChair_polySurface53
+    2300018: OfficeChair_polySurface54
+    3300000: OfficeChair_polySurface35
+    3300002: OfficeChair_polySurface36
+    3300004: OfficeChair_polySurface41
+    3300006: OfficeChair_polySurface43
+    3300008: OfficeChair_polySurface47
+    3300010: OfficeChair_polySurface48
+    3300012: OfficeChair_polySurface49
+    3300014: OfficeChair_polySurface51
+    3300016: OfficeChair_polySurface53
+    3300018: OfficeChair_polySurface54
+    4300000: OfficeChair_polySurface54
+    4300002: OfficeChair_polySurface53
+    4300004: OfficeChair_polySurface51
+    4300006: OfficeChair_polySurface49
+    4300008: OfficeChair_polySurface48
+    4300010: OfficeChair_polySurface47
+    4300012: OfficeChair_polySurface43
+    4300014: OfficeChair_polySurface41
+    4300016: OfficeChair_polySurface36
+    4300018: OfficeChair_polySurface35
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
