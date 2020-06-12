@@ -43,12 +43,59 @@ public class PlayerMove: MonoBehaviour
         characterController = GetComponent<CharacterController>();
     }
 
+	Vector3 velocity;
+	float gravity = -9.81f;
+	public Transform groundCheck;
+	public float groundDist = 0.4f;
+	public LayerMask groundMask;
+	public bool isGrounded;
+	public float jumpHeight = 2;
+	public float maxJumpHeight = 8;
+	float currentJumpHeight;
+	public bool isAllowedExJump = false;
+	public float jumpAscendSpeed = .3f;
+
+    void BetterJumpV2()
+    {
+	// might not need
+	isGrounded = Physics.CheckSphere(groundCheck.position, groundDist, groundMask);
+
+	if (isGrounded && velocity.y < 0)
+	{
+		velocity.y = -2f;	
+		isAllowedExJump = false;
+	}
+
+	if(!isGrounded && Input.GetButton("Jump") && isAllowedExJump)
+	{
+		if (velocity.y <= maxJumpHeight)
+		{
+			velocity.y += jumpAscendSpeed;
+		}
+		else
+		{
+			isAllowedExJump = false;
+		}
+	}
+	
+	if(Input.GetButtonDown("Jump") && isGrounded)
+	{
+		isAllowedExJump = true;
+		velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+	}
+
+	// gravity
+        velocity.y += gravity * Time.deltaTime;
+        characterController.Move(velocity * Time.deltaTime);
+    }
+
 
     void Update()
     {
         PlayerMovement();
-        JumpInput();
-        BetterJump();
+        //JumpInput();
+        //BetterJump();
+ 	BetterJumpV2();
     }
 
     private void PlayerMovement()
