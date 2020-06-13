@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 953621212629542528}
   - component: {fileID: 953621212632442534}
   - component: {fileID: 953621212631311462}
+  - component: {fileID: 981704765590672920}
   m_Layer: 0
   m_Name: OfficeChair_polySurface36
   m_TagString: Untagged
@@ -77,6 +78,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &981704765590672920
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953621212629056160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300016, guid: b4410fca7111bcb4b909893f62d2f1cc, type: 3}
 --- !u!1 &953621212629056162
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +103,7 @@ GameObject:
   - component: {fileID: 953621212629542530}
   - component: {fileID: 953621212632442528}
   - component: {fileID: 953621212631311456}
+  - component: {fileID: 7486793309590257861}
   m_Layer: 0
   m_Name: OfficeChair_polySurface41
   m_TagString: Untagged
@@ -154,6 +170,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &7486793309590257861
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953621212629056162}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300014, guid: b4410fca7111bcb4b909893f62d2f1cc, type: 3}
 --- !u!1 &953621212629056164
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +235,7 @@ GameObject:
   - component: {fileID: 953621212629542534}
   - component: {fileID: 953621212632442532}
   - component: {fileID: 953621212631311460}
+  - component: {fileID: 7223232260081017289}
   m_Layer: 0
   m_Name: OfficeChair_polySurface35
   m_TagString: Untagged
@@ -271,6 +302,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &7223232260081017289
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953621212629056166}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300018, guid: b4410fca7111bcb4b909893f62d2f1cc, type: 3}
 --- !u!1 &953621212629056168
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,6 +327,7 @@ GameObject:
   - component: {fileID: 953621212629542536}
   - component: {fileID: 953621212632442542}
   - component: {fileID: 953621212631311470}
+  - component: {fileID: 2155369628693632479}
   m_Layer: 0
   m_Name: OfficeChair_polySurface48
   m_TagString: Untagged
@@ -348,6 +394,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2155369628693632479
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953621212629056168}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300008, guid: b4410fca7111bcb4b909893f62d2f1cc, type: 3}
 --- !u!1 &953621212629056170
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +419,7 @@ GameObject:
   - component: {fileID: 953621212629542538}
   - component: {fileID: 953621212632442536}
   - component: {fileID: 953621212631311464}
+  - component: {fileID: 7565132623525285528}
   m_Layer: 0
   m_Name: OfficeChair_polySurface49
   m_TagString: Untagged
@@ -425,6 +486,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &7565132623525285528
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953621212629056170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300006, guid: b4410fca7111bcb4b909893f62d2f1cc, type: 3}
 --- !u!1 &953621212629056172
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +511,7 @@ GameObject:
   - component: {fileID: 953621212629542540}
   - component: {fileID: 953621212632442530}
   - component: {fileID: 953621212631311458}
+  - component: {fileID: 6643891258532036014}
   m_Layer: 0
   m_Name: OfficeChair_polySurface43
   m_TagString: Untagged
@@ -502,6 +578,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6643891258532036014
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953621212629056172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300012, guid: b4410fca7111bcb4b909893f62d2f1cc, type: 3}
 --- !u!1 &953621212629056174
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +603,7 @@ GameObject:
   - component: {fileID: 953621212629542542}
   - component: {fileID: 953621212632442540}
   - component: {fileID: 953621212631311468}
+  - component: {fileID: 4889723038622747044}
   m_Layer: 0
   m_Name: OfficeChair_polySurface47
   m_TagString: Untagged
@@ -579,6 +670,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4889723038622747044
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953621212629056174}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300010, guid: b4410fca7111bcb4b909893f62d2f1cc, type: 3}
 --- !u!1 &953621212629056176
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,6 +695,7 @@ GameObject:
   - component: {fileID: 953621212629542544}
   - component: {fileID: 953621212632442550}
   - component: {fileID: 953621212631311478}
+  - component: {fileID: 4779819788119608461}
   m_Layer: 0
   m_Name: OfficeChair_polySurface54
   m_TagString: Untagged
@@ -656,6 +762,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4779819788119608461
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953621212629056176}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: b4410fca7111bcb4b909893f62d2f1cc, type: 3}
 --- !u!1 &953621212629056180
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +787,7 @@ GameObject:
   - component: {fileID: 953621212629542548}
   - component: {fileID: 953621212632442538}
   - component: {fileID: 953621212631311466}
+  - component: {fileID: 6414336733201364564}
   m_Layer: 0
   m_Name: OfficeChair_polySurface51
   m_TagString: Untagged
@@ -733,6 +854,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6414336733201364564
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953621212629056180}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300004, guid: b4410fca7111bcb4b909893f62d2f1cc, type: 3}
 --- !u!1 &953621212629056182
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,6 +879,7 @@ GameObject:
   - component: {fileID: 953621212629542550}
   - component: {fileID: 953621212632442548}
   - component: {fileID: 953621212631311476}
+  - component: {fileID: 4199215536581656790}
   m_Layer: 0
   m_Name: OfficeChair_polySurface53
   m_TagString: Untagged
@@ -810,3 +946,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4199215536581656790
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953621212629056182}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300002, guid: b4410fca7111bcb4b909893f62d2f1cc, type: 3}
