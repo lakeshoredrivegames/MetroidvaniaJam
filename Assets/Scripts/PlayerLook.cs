@@ -35,12 +35,14 @@ public class PlayerLook : MonoBehaviour
     private static GrabIconHide GRAB_ICON_HIDE = new GrabIconHide();
     private static GrabIconShow GRAB_ICON_SHOW = new GrabIconShow();
     private GrabIconState grabIconState = GRAB_ICON_HIDE;
+    private Interact playerInteract;
 
     private void Awake()
     {
         GRAB_ICON_HIDE._icon = grabSprite;
         GRAB_ICON_SHOW._icon = grabSprite;
-   
+        playerInteract = playerBody.gameObject.GetComponent<Interact>();
+
         LockCursor();
 	Cursor.visible = false;
         xAxisClamp = 0;
@@ -76,20 +78,22 @@ public class PlayerLook : MonoBehaviour
     {
         grabIconState = GRAB_ICON_HIDE;
 
-        RaycastHit hit;
-        if (Physics.Raycast(this.gameObject.transform.position, 
-            this.gameObject.transform.forward, out hit, grabSpriteRaycastLength))
+        if(!playerInteract.isHolding)
         {
-            if (hit.transform.gameObject.tag == grabSpriteTagName)
+            RaycastHit hit;
+            if (Physics.Raycast(this.gameObject.transform.position,
+                this.gameObject.transform.forward, out hit, grabSpriteRaycastLength))
             {
-                grabIconState = GRAB_ICON_SHOW;
-            }
-            else
-            {
-                grabIconState = GRAB_ICON_HIDE;
+                if (hit.transform.gameObject.tag == "Battery" || hit.transform.gameObject.tag == "Pickup")
+                {
+                    grabIconState = GRAB_ICON_SHOW;
+                }
+                else
+                {
+                    grabIconState = GRAB_ICON_HIDE;
+                }
             }
         }
-
 
         grabIconState.render();
     }
