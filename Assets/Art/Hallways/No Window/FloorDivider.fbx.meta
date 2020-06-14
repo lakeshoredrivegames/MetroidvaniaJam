@@ -22,6 +22,9 @@ ModelImporter:
     4300000: Plane.003
     4300002: Plane.001
     4300004: Plane.002
+    6400000: Plane.001
+    6400002: Plane.002
+    6400004: Plane.003
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -55,7 +58,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
