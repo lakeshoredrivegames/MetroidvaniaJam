@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 6489255902380140590}
   - component: {fileID: 6489255902380140585}
   - component: {fileID: 6489255902380140586}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Battery_2
-  m_TagString: Pickup
+  m_TagString: Battery
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,12 +108,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lerpTimer: 0
-  lerpSeconds: 0.6
+  lerpSeconds: 0.05
   lerpToObject: {fileID: 0}
+  oldHeldObject: {fileID: 0}
   actionObject: {fileID: 0}
-  lerpToPosition: {x: 0, y: 0, z: 0}
   lerpToRotation: {x: 0, y: 0, z: 0, w: 0}
   activateCam: 0
+  inBatteryHolder: 0
 --- !u!54 &6489255902380140586
 Rigidbody:
   m_ObjectHideFlags: 0

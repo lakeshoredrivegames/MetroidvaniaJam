@@ -7,6 +7,7 @@ public class Animate : MonoBehaviour
     private ObjectController objectController;
     private GameObject[] batteryHolders;
     public bool hasAllBatteries;
+    public bool openDoor = false;
 
 
     // Start is called before the first frame update
@@ -15,12 +16,16 @@ public class Animate : MonoBehaviour
         objectController = GetComponent<ObjectController>();
         batteryHolders = objectController.batteryHolders;
         hasAllBatteries = false;
+        if (openDoor)
+        {
+            Animation();
+        }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void Animation()
@@ -44,5 +49,6 @@ public class Animate : MonoBehaviour
         Debug.Log("in animation");
         Animator animator = GetComponent<Animator>();
         animator.SetBool("Open", hasAllBatteries);
+        
     }
 }
