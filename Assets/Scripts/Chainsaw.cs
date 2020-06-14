@@ -10,14 +10,24 @@ public class Chainsaw : InteractObject
     ParticleSystem exp;
     public AudioClip audioChainsawSlashing;
     public AudioClip audioChainsawIdle;
+    public float timeToCut;
     AudioSource audio;
+    public Animator animator;
 
+    private bool isTurnedOn;
     float triggerTimer = 0;
 
     void Start()
     {
         exp = GetComponent<ParticleSystem>();
         audio = GetComponent<AudioSource>();
+        timeToCut = 5;
+        isTurnedOn = false;
+        if(!animator)
+        {
+
+            Debug.Log("set animator on chainsaw to the saw");
+        }
     }
 
     public override void Pickup(GameObject holdPosition)
@@ -37,7 +47,11 @@ public class Chainsaw : InteractObject
         //if has battery start chainsaw
         if (this.gameObject.transform.GetChild(0).gameObject.GetComponent<SnapTrigger>().hasBattery)
         {
+            isTurnedOn = true;
             audio.Play();
+            //start animation
+
+            animator.SetBool("On", true);
         }
 
         this.GetComponent<Lerping>().StartLerp(true);
@@ -49,13 +63,15 @@ public class Chainsaw : InteractObject
 
     public override void Putdown(Vector3 forwardDir, float throwStrength)
     {
+        isTurnedOn = false;
         Debug.Log("determine where to put down object");
         ChangeLayersRecursively(this.transform, "Pickup");
         Rigidbody heldRigidBody = this.GetComponent<Rigidbody>();
 
 
-
-        GetComponent<AudioSource>().Stop();
+        audio.Stop();
+        animator.SetBool("On", false);
+        //GetComponent<AudioSource>().Stop();
         GameObject batteryHolder = this.gameObject.transform.GetChild(0).gameObject;
         //batteryHolder.GetComponent<AudioSource>().Stop();
         //TODo - need to fix this 
@@ -85,7 +101,7 @@ public class Chainsaw : InteractObject
     //TODO: move audio to separate method
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Vine")
+        if (col.gameObject.tag == "Vine" && isTurnedOn)
         {
             Debug.Log("start chainsaw");
             triggerTimer = 0;
@@ -99,13 +115,13 @@ public class Chainsaw : InteractObject
     void OnTriggerStay(Collider col)
     {
 
-        if (col.gameObject.tag == "Vine")
+        if (col.gameObject.tag == "Vine" && isTurnedOn)
         {
 
             exp.Play();
 
             triggerTimer += Time.deltaTime;
-            if (triggerTimer > 11)
+            if (triggerTimer > timeToCut)
             {
                 exp.Stop();
                 audio.Stop();
@@ -120,7 +136,7 @@ public class Chainsaw : InteractObject
     void OnTriggerExit(Collider col)
     {
 
-        if (col.gameObject.tag == "Vine")
+        if (col.gameObject.tag == "Vine" && isTurnedOn)
         {
             exp.Stop();
             audio.Stop();

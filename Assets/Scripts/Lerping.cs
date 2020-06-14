@@ -70,7 +70,8 @@ public class Lerping : MonoBehaviour
 
         if(lerpToObject.GetComponent<AudioSource>() != null)
             lerpToObject.GetComponent<AudioSource>().Play();
-
+        else
+            player.GetComponent<AudioSource>().Play();
 
         if (oldHeldObject != null)
         {
