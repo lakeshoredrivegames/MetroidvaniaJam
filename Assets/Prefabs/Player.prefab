@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   throwStrength: 5
   HoldPosition: {fileID: 754782229}
-  raycastDistance: 20
+  raycastDistance: 5
   canPlaceObject: 0
   snapObject: {fileID: 0}
   heldObject: {fileID: 0}
@@ -1364,7 +1364,7 @@ MonoBehaviour:
   playerBody: {fileID: 5202456651995849901}
   grabSprite: {fileID: 4874989088584456532}
   grabSpriteTagName: Pickup
-  grabSpriteRaycastLength: 20
+  grabSpriteRaycastLength: 5
   pauseMenu: {fileID: 1649924436312870573}
 --- !u!82 &2312081986549355317
 AudioSource:

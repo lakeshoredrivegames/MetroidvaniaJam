@@ -9,6 +9,7 @@ public class PowerupPickupDist : MonoBehaviour
     private bool isActivated = false;
     private Vector3 startPos;
     public GameObject powerupText;
+    public PlayerLook playerLook;
 
     public void Start()
     {
@@ -29,6 +30,7 @@ public class PowerupPickupDist : MonoBehaviour
             powerupSound.Play();
             this.gameObject.GetComponent<MeshRenderer>().enabled = false;
             playerInteract.raycastDistance = newPickupDistance;
+            playerLook.grabSpriteRaycastLength = newPickupDistance;
             isActivated = true;
             StartCoroutine(showText());
         }
