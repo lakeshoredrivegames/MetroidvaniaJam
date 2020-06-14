@@ -72,5 +72,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: BatteryHolder_3
       objectReference: {fileID: 0}
+    - target: {fileID: 486300012727825535, guid: 718fdcc06f9f3c44aabefeee87282710,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.6454738
+      objectReference: {fileID: 0}
+    - target: {fileID: 486300012727825535, guid: 718fdcc06f9f3c44aabefeee87282710,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1.4119436
+      objectReference: {fileID: 0}
+    - target: {fileID: 486300012727825535, guid: 718fdcc06f9f3c44aabefeee87282710,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 1.3006896
+      objectReference: {fileID: 0}
+    - target: {fileID: 486300012727825535, guid: 718fdcc06f9f3c44aabefeee87282710,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.3988254
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 718fdcc06f9f3c44aabefeee87282710, type: 3}

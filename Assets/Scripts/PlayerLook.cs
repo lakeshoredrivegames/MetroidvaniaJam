@@ -84,13 +84,12 @@ public class PlayerLook : MonoBehaviour
             {
                 grabIconState = GRAB_ICON_SHOW;
             }
+            else
+            {
+                grabIconState = GRAB_ICON_HIDE;
+            }
         }
 
-        Interact playerInteract = playerBody.gameObject.GetComponent<Interact>();
-        if (playerInteract.isHolding)
-        {
-            grabIconState = GRAB_ICON_HIDE;
-        }
 
         grabIconState.render();
     }

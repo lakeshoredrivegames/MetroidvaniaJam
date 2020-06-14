@@ -5,7 +5,7 @@ using UnityEngine;
 public class SnapTrigger : MonoBehaviour
 {
 
-    public GameObject doorObject;
+    public GameObject activateObject;
     private GameObject player;
     private bool played;
     public AudioClip SoundToPlay;
@@ -20,7 +20,7 @@ public class SnapTrigger : MonoBehaviour
         player = GameObject.Find("Player");
         boxCollider = GetComponent<BoxCollider>();
 
-        if(doorObject == null)
+        if(activateObject == null)
         {
             Debug.Log("Door Object is empty. Add a door holder object to the trigger object named " + gameObject.name);
         }
@@ -34,7 +34,7 @@ public class SnapTrigger : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.name == "Battery")
+        if (col.gameObject.tag == "Battery")
         {
             //if (col.gameObject.GetComponent<Interact>().heldObject == null)
             //{
@@ -55,13 +55,13 @@ public class SnapTrigger : MonoBehaviour
 
     void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.name == "Battery" && !hasBattery)
+        if (col.gameObject.tag == "Battery" && !hasBattery)
         {
-            Debug.Log("stay trigger");
-            player.GetComponent<Interact>().canPlaceObject = true;
-            player.GetComponent<Interact>().snapObject = this.gameObject;
-            player.GetComponent<Interact>().actionObject = doorObject;
-            col.gameObject.GetComponent<Lerping>().actionObject = doorObject;
+            //Debug.Log("stay trigger");
+            col.gameObject.GetComponent<InteractObject>().canPlaceObject = true;
+            col.gameObject.GetComponent<Lerping>().lerpToObject = this.gameObject;
+            col.gameObject.GetComponent<Lerping>().actionObject = activateObject;
+            //col.gameObject.GetComponent<Lerping>().actionObject = activateObject;
 
 
         }
@@ -69,10 +69,12 @@ public class SnapTrigger : MonoBehaviour
 
     void OnTriggerExit(Collider col)
     {
-        if (col.gameObject.name == "Battery")
+        if (col.gameObject.tag == "Battery" && !hasBattery)
         {
-            Debug.Log("exit trigger");
-            player.GetComponent<Interact>().canPlaceObject = false;
+           // Debug.Log("exit trigger");
+            col.gameObject.GetComponent<InteractObject>().canPlaceObject = false;
+            col.gameObject.GetComponent<Lerping>().actionObject = null;
+            col.gameObject.GetComponent<Lerping>().lerpToObject = null;
             col.gameObject.transform.rotation = oldRotation;
 
 
