@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PowerupFastWalk : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class PowerupFastWalk : MonoBehaviour
     public AudioSource powerupSound;
     private bool isActivated = false;
     private Vector3 startPos;
+    public GameObject powerupText;
+
     public void Start()
     {
         startPos = transform.position;
@@ -16,13 +19,6 @@ public class PowerupFastWalk : MonoBehaviour
     {
         this.transform.position = new Vector3(transform.position.x, startPos.y +
             Mathf.Sin(4f * Time.time) * 0.08f, transform.position.z);
-        if(isActivated)
-        {
-            if(powerupSound.isPlaying == false)
-            {
-                this.gameObject.SetActive(false);
-            }
-        }
     }
 
     public void OnTriggerEnter(Collider col)
@@ -35,6 +31,15 @@ public class PowerupFastWalk : MonoBehaviour
             this.gameObject.GetComponent<MeshRenderer>().enabled = false;
             playerMove.movementSpeed = newMovementSpeed;
             isActivated = true;
+            StartCoroutine(showText());
         }
+    }
+
+    IEnumerator showText()
+    {
+        powerupText.SetActive(true);
+        yield return new WaitForSeconds(5);
+        powerupText.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 }

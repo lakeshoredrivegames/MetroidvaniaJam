@@ -9,6 +9,8 @@ public class Animate : MonoBehaviour
     public bool hasAllBatteries;
     public bool openDoor = false;
 
+    public AudioSource openDoorAudio;
+    public AudioSource closeDoorAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -37,11 +39,23 @@ public class Animate : MonoBehaviour
             {
                 Debug.Log("true batteries: " + batteryHolder.name);
                 hasAllBatteries = true;
+                if (!openDoorAudio.isPlaying)
+                {
+                    openDoorAudio.time = 0.01f;
+                    openDoorAudio.Play();
+                    openDoorAudio.SetScheduledEndTime(AudioSettings.dspTime + (1.5f - 0.01f));
+                }
             }
             else
             {
                 Debug.Log("false batteries: " + batteryHolder.name);
                 hasAllBatteries = false;
+                if (!closeDoorAudio.isPlaying)
+                {
+                    closeDoorAudio.time = 3f;
+                    closeDoorAudio.Play();
+                    closeDoorAudio.SetScheduledEndTime(AudioSettings.dspTime + (4.6f - 3f));
+                }
                 break;
             }
         }

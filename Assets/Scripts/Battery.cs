@@ -73,7 +73,13 @@ public class Battery : InteractObject
             heldRigidBody.useGravity = true;
             //TODO: create throw state
             heldRigidBody.velocity = forwardDir * throwStrength;
-
+            AudioSource audio = gameObject.GetComponent<AudioSource>();
+            if(!audio.isPlaying)
+            {
+                audio.time = 0.2f;
+                audio.Play();
+                audio.SetScheduledEndTime(AudioSettings.dspTime + (0.8f - 0.02f));
+            }
             this.GetComponent<Lerping>().actionObject = null;
         }
         
