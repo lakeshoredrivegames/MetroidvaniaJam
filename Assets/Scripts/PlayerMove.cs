@@ -34,6 +34,7 @@ public class PlayerMove: MonoBehaviour
     public float impactLen = 2f;
     public float intensity= 10f;
 
+    public bool canJump = false;
 
     private void Awake()
     {
@@ -86,7 +87,7 @@ public class PlayerMove: MonoBehaviour
 
     private void JumpInput()
     {
-        if(Input.GetKeyDown(jumpKey) && !isJumping)
+        if (Input.GetKeyDown(jumpKey) && !isJumping && canJump)
         {
             isJumping = true;
             StartCoroutine(JumpEvent());

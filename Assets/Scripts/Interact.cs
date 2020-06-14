@@ -11,7 +11,7 @@ public class Interact : StateMachine
 
     [SerializeField] public float throwStrength;
     [SerializeField] public GameObject HoldPosition;
-    [SerializeField] private float raycastDistance = 20.0f;
+    [SerializeField] public float raycastDistance = 20.0f;
 
     public bool canPlaceObject;
     public GameObject snapObject;
