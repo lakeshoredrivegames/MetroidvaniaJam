@@ -192,7 +192,7 @@ MonoBehaviour:
   audioChainsawSlashing: {fileID: 8300000, guid: 0861a557adb3f364885e1fd60eaa6895,
     type: 3}
   audioChainsawIdle: {fileID: 8300000, guid: 1bb20788c6710cf4cbd8b4ee4e160dd4, type: 3}
-  timeToCut: 5
+  timeToCut: 1.1
   animator: {fileID: 1952366794397879419}
 --- !u!114 &8148670933230718285
 MonoBehaviour:
