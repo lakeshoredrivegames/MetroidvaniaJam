@@ -21,7 +21,6 @@ public class Chainsaw : InteractObject
     {
         exp = GetComponent<ParticleSystem>();
         audio = GetComponent<AudioSource>();
-        timeToCut = 5;
         isTurnedOn = false;
         if(!animator)
         {
