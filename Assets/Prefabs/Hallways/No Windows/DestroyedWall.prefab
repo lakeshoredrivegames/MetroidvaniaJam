@@ -518,6 +518,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DestroyedWall
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 06b1fc381c15f364abd75d2c4321482b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 06b1fc381c15f364abd75d2c4321482b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2
@@ -606,6 +610,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5fa8c7e474194e04796fd7b470f7ff9d, type: 3}
       propertyPath: m_Name
       value: DestroyedWallfloor
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5fa8c7e474194e04796fd7b470f7ff9d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5fa8c7e474194e04796fd7b470f7ff9d, type: 3}
       propertyPath: m_LocalPosition.x
